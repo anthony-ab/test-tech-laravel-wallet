@@ -33,6 +33,11 @@ class WalletTransaction extends Model
         return $this->belongsTo(WalletTransfer::class, 'transfer_id');
     }
 
+    public function recurringTransfer(): BelongsTo
+    {
+        return $this->belongsTo(WalletRecurringTransfer::class, 'recurring_transfer_id');
+    }
+
     /**
      * @return BelongsTo<Wallet>
      */
