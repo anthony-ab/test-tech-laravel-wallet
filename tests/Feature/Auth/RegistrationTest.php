@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
-use function Pest\Laravel\assertAuthenticated;
+use App\Models\User;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+use function Pest\Laravel\assertAuthenticated;
 
 test('registration screen can be rendered', function () {
     $response = get('/register');
