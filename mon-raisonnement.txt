@@ -1,0 +1,13 @@
+Raisonnement pour compléter la 3ème feature des virements récurrents :
+
+Définir une task.
+  --> Vérifier si nous sommes le jour où nous devons effectuer la transaction
+    --> Vérifier si nous sommes après (ou égal) start_at et avant (ou égal) end_at.
+    --> Vérifier si une recurring transaction a été réalisée :
+      --> Non : alors nous réalisons une transaction.
+      --> Oui : depuis combien de temps ?
+        --> ex: si 15 février, avec début le 10 février et fréquence de 30 jours.
+        --> alors on envoie que si current_date = frequency - created_at de la dernière recurring transaction.
+        --> Donc dans notre cas : 30 jours - 5 jours (car transaction faite il y a 5 jours) = dans 25 jours.
+        --> Donc, pas de transaction à faire.
+        --> On crée une transaction uniquement si la différence est de 0 ou si aucune transaction n'existe et qu'on est le jour du start_at.
